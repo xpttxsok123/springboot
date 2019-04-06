@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author xupan
- * @date 2019/04/06
  */
 @Controller
 public class IndexController {
