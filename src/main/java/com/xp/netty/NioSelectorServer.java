@@ -1,4 +1,4 @@
-package com.youxiong.netty;
+package com.xp.netty;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

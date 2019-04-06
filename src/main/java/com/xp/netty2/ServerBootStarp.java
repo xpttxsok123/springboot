@@ -1,4 +1,4 @@
-package com.youxiong.netty2;
+package com.xp.netty2;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.EventLoopGroup;

@@ -1,4 +1,4 @@
-package com.youxiong.websocket;
+package com.xp.websocket;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;

@@ -1,4 +1,4 @@
-package com.youxiong.bio.bio2;
+package com.xp.bio.bio1;
 
 import org.springframework.util.StringUtils;
 
@@ -21,7 +21,6 @@ public class ServerHandler extends Thread {
 
     public ServerHandler(Socket socket) {
         this.socket = socket;
-
     }
 
     @Override
@@ -31,7 +30,7 @@ public class ServerHandler extends Thread {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             String body = null;
             while (true) {
-                body = in.readLine();//readLine()方法将会阻塞，直到在一个由换行符或者回车符结尾的字符串被读取
+                body = in.readLine();
                 if (StringUtils.isEmpty(body)) {
                     break;
                 }

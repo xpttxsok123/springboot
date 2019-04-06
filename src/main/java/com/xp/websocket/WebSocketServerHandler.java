@@ -1,4 +1,4 @@
-package com.youxiong.websocket;
+package com.xp.websocket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 /**

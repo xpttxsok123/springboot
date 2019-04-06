@@ -1,4 +1,4 @@
-package com.youxiong.bio.bio1;
+package com.xp.bio.bio1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
