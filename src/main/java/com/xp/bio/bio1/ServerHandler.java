@@ -1,3 +1,4 @@
+/*
 package com.xp.bio.bio1;
 
 import org.springframework.util.StringUtils;
@@ -8,12 +9,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+*/
 /**
  * @ClassName ServerHandler
  * @Description TODO
  * @Author
  * @Date 2019/3/23 14:00
- **/
+ **//*
+
 public class ServerHandler extends Thread {
 
 
@@ -46,3 +49,4 @@ public class ServerHandler extends Thread {
 
 
 }
+*/

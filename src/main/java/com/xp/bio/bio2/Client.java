@@ -1,3 +1,4 @@
+/*
 package com.xp.bio.bio2;
 
 import java.io.BufferedReader;
@@ -6,12 +7,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+*/
 /**
  * @ClassName Client
  * @Description TODO
  * @Author
  * @Date 2019/3/23 14:02
- **/
+ **//*
+
 public class Client {
 
 
@@ -46,3 +49,4 @@ public class Client {
 
 
 }
+*/

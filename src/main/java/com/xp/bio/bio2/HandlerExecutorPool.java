@@ -1,13 +1,16 @@
+/*
 package com.xp.bio.bio2;
 
 import java.util.concurrent.*;
 
+*/
 /**
  * @ClassName HandlerExecutorPool
  * @Description TODO
  * @Author
  * @Date 2019/3/23 14:59
- **/
+ **//*
+
 public class HandlerExecutorPool {
 
     private ExecutorService executorService;
@@ -28,3 +31,4 @@ public class HandlerExecutorPool {
     }
 
 }
+*/
