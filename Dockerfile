@@ -1,12 +1,9 @@
-FROM openjdk
+FROM fabric8/java-jboss-openjdk8-jdk
 
 #设置时区与语言
 ENV TZ=Asia/Shanghai
 
-ENV jarName=springboot-1.0-SNAPSHOP.jar
-
-RUN ln -snf /usr/share/zoneinfo/TZ /etc/localtime && echo TZ /etc/localtime && echo TZ > /etc/timezone
-
+ENV jarName=springboot.jar
 
 ADD target/$jarName /
 
