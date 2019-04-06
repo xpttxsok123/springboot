@@ -3,6 +3,9 @@ package com.xp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * @author xupan
+ */
 @Controller
 public class IndexController {
 

@@ -1,3 +1,4 @@
+/*
 package com.xp.netty;
 
 import java.io.IOException;
@@ -7,12 +8,14 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.util.Iterator;
 
+*/
 /**
  * @ClassName NioSelectorServer
  * @Description TODO
  * @Author
  * @Date 2019/3/25 12:50
- **/
+ **//*
+
 public class NioSelectorServer {
 
     public static void main(String[] args) throws IOException {
@@ -44,3 +47,4 @@ public class NioSelectorServer {
     }
 
 }
+*/

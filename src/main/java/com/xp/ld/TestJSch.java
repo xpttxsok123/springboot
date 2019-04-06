@@ -1,3 +1,4 @@
+/*
 package com.xp.ld;
 
 import com.jcraft.jsch.JSch;
@@ -8,12 +9,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+*/
 /**
  * @ClassName TestJSch
  * @Description TODO
  * @Author
  * @Date 2019/3/25 21:55
- **/
+ **//*
+
 public class TestJSch {
 
     //本地端口
@@ -79,3 +82,4 @@ public class TestJSch {
     }
 
 }
+*/

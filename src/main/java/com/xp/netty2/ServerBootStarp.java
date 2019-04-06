@@ -1,3 +1,4 @@
+/*
 package com.xp.netty2;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -6,6 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.internal.SystemPropertyUtil;
 
+*/
 /**
  * @ClassName ServerBootStarp
  * @Description TODO
@@ -16,7 +18,8 @@ import io.netty.util.internal.SystemPropertyUtil;
  * https://segmentfault.com/a/1190000007403873#articleHeader4
  *
  *
- **/
+ **//*
+
 public class ServerBootStarp {
 
     public static void main(String[] args){
@@ -24,11 +27,13 @@ public class ServerBootStarp {
     }
 
 
-    /**
+    */
+/**
      * Reactor 单线程模型.
      *
      * @throws Exception
-     */
+     *//*
+
     public void testSimpleThread() {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         ServerBootstrap b = new ServerBootstrap();
@@ -43,7 +48,8 @@ public class ServerBootStarp {
     }
 
 
-    /**
+    */
+/**
      * Reactor多线程模型
      * bossGroup 中只有一个线程, 而 workerGroup 中的线程是 CPU 核心数乘以2,
      * 因此对应的到 Reactor 线程模型中, 我们知道, 这样设置的 NioEventLoopGroup 其实就是 Reactor 多线程模型.
@@ -55,7 +61,8 @@ public class ServerBootStarp {
      每个SubReactor管理多个连接，负责这些连接的读和写，属于IO密集型线程，读到完整的消息就丢给业务线程池处理业务，处理完比后，响应消息一般放到队列里，SubReactor会去处理队列，然后将消息写回。
      *
      * @throws Exception
-     */
+     *//*
+
     public void testMuiltThread() {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -67,9 +74,11 @@ public class ServerBootStarp {
     }
 
 
-    /**
+    */
+/**
      *
-     */
+     *//*
+
     public void testMasterSlaverMuiltThread() {
         EventLoopGroup bossGroup = new NioEventLoopGroup(4);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -80,3 +89,4 @@ public class ServerBootStarp {
 
 
 }
+*/
