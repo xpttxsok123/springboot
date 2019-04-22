@@ -1,12 +1,12 @@
 package com.xp.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author xupan
  */
-@Controller
+@RestController
 public class IndexController {
 
     /**
@@ -20,14 +20,6 @@ public class IndexController {
     }
 
 
-    /**
-     * @param index 下标
-     * @return 返回字符
-     */
-    @RequestMapping(value = "/index1")
-    public String indexq(String index) {
-        return "index";
-    }
 
     @RequestMapping(value = "/string")
     public String string(String index) {

@@ -1,13 +1,16 @@
 /*
+
 package com.xp.ld;
 
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+import com.sun.btrace.annotations.BTrace;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 
 */
 /**
@@ -17,6 +20,7 @@ import java.sql.Statement;
  * @Date 2019/3/25 21:55
  **//*
 
+@BTrace
 public class TestJSch {
 
     //本地端口
@@ -58,6 +62,8 @@ public class TestJSch {
     }
 
     public static void sql() {
+
+
         Connection conn = null;
         ResultSet rs = null;
         Statement st = null;
@@ -82,4 +88,5 @@ public class TestJSch {
     }
 
 }
+
 */
