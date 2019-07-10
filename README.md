@@ -1,20 +1,15 @@
-# springboot 
-
-
-**删除远程target .idea**
+# mysql
 ```
-    git rm --cached -r target/
-    git rm --cached -r .idea
-   
-    git commit -m 'delete rm target and .idea'
-    git push
-```
+1.超大数据量
+2.频繁I/O读写
+3.分布式推荐分库
+``` 
 
 
+[mysql分库](doc/mysql/mysql分库)
+- 垂直分库: 一般按照业务领域划分，如用户库, 订单库, feed库等, 解决表过多的问题
 
-**切换分支》》推送到远程分支**
-```
-git checkout -b  springboot001
-git push --set-upstream origin springboot001
-```
 
+[mysql分表](doc/mysql/mysql分表)
+- 垂直分表: 解决单表列过多的问题
+- 水平分表: 解决但表行过多的问题
