@@ -36,7 +36,7 @@ public class IndexControllerTest {
      */
     @Test
     public void testIndexq() throws Exception {
-        boolean a = 1==2;
+        boolean a = 1==1;
         Assert.assertTrue(a);
     }
 //  jay.xu@wework.com

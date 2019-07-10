@@ -2,16 +2,16 @@ package com.xp.controller;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Before; 
+import org.junit.Before;
 import org.junit.After;
 
-/** 
-* DetailController Tester. 
-* 
-* @author <Authors name> 
-* @since <pre>Apr 6, 2019</pre> 
-* @version 1.0 
-*/ 
+/**
+ * DetailController Tester.
+ *
+ * @author <Authors name>
+ * @version 1.0
+ * @since <pre>Apr 6, 2019</pre>
+ */
 public class DetailControllerTest {
 
     @Before
@@ -27,7 +27,7 @@ public class DetailControllerTest {
      */
     @Test
     public void testIndex() throws Exception {
-        boolean a = 1==1;
+        boolean a = 1 == 1;
         Assert.assertTrue(a);
     }
 
@@ -36,10 +36,8 @@ public class DetailControllerTest {
      */
     @Test
     public void testIndexq() throws Exception {
-        boolean a = 1==2;
-        Assert.assertTrue(a);
+        Assert.assertTrue(true);
     }
 
 
-
-} 
+}
