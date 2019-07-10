@@ -11,6 +11,11 @@
 <body>
     <div id="message"></div>
     <div id="text">hi</div>
+    <div id="text">hi</div>
+    <div id="text">hi</div>
+    <div id="text">hi</div>
+    <div id="text">hi</div>
+    <div id="text">hi</div>
     <button onclick="send()">发送</button>
     <button onclick="closeWebSocket()">关闭</button>
 </body>
