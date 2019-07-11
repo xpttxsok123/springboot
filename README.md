@@ -6,10 +6,10 @@
 ``` 
 
 
-[mysql分库](doc/mysql/mysql分库)
+[mysql分库](doc/mysql/mysql分库.md)
 - 垂直分库: 一般按照业务领域划分，如用户库, 订单库, feed库等, 解决表过多的问题
 
 
-[mysql分表](doc/mysql/mysql分表)
+[mysql分表](doc/mysql/mysql分表.md)
 - 垂直分表: 解决单表列过多的问题
 - 水平分表: 解决但表行过多的问题
