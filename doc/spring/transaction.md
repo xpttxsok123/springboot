@@ -1,10 +1,14 @@
 ###@Transaction
+======
+Transaction的使用以及注意事项：
+
 
 - @Transaction放在interface上     `spring不建议这样使用`
 - @Transaction放在class上         
 - @Transaction放在方法上           `public 可见度的方法上, 放在protected、private或者 package可见度的方法上，也不会报错，不过事务设置不会起作用`
 
 `注意：` 
+
 1. Spring建议我们将@Transaction注解放在在类，方法上
 因为注解不能被继承，所以业务接口中标注的@Transactional注解不会被业务实现类继承。所以可能会出现不启动事务的情况
 
@@ -27,13 +31,18 @@
         SecurityException - 安全异常
         UnsupportedOperationException - 不支持的操作异常
         
-3. 大部分使用spring的事务都是使用代理的模式，代理实现的事务有一定的局限性：仅有在公有方法上标记的@Transactional有效；
-   仅有外部方法调用过程才会被代理截获，事务才会有效，也就是说，一个方法调用本对象的另一个方法，没有通过代理类，事务也就无法生效。
-   
-4.如何改变默认规则：
-    
-      　　4.1 让checked例外也回滚：在整个方法前加上 @Transactional(rollbackFor=Exception.class)
-      　　4.2 让unchecked例外不回滚： @Transactional(notRollbackFor=RunTimeException.class)
-      　　4.3 不需要事务管理的(只查询的)方法：@Transactional(propagation=Propagation.NOT_SUPPORTED)
-      　　4.4 如果异常被try｛｝catch｛｝了，事务就不回滚了，如果想让事务回滚必须再往外抛try｛｝catch｛throw RuntimeException
+  3. 底层原理
   
+            大部分使用spring的事务都是使用代理的模式，代理实现的事务有一定的局限性：仅有在公有方法上标记的@Transactional有效；
+            仅有外部方法调用过程才会被代理截获，事务才会有效，也就是说，一个方法调用本对象的另一个方法，没有通过代理类，事务也就无法生效。
+  
+  4. 如何改变默认规则：
+  
+            4.1 让checked例外也回滚：在整个方法前加上 @Transactional(rollbackFor=Exception.class)
+            4.2 让unchecked例外不回滚： @Transactional(notRollbackFor=RunTimeException.class)
+            4.3 不需要事务管理的(只查询的)方法：@Transactional(propagation=Propagation.NOT_SUPPORTED)
+            4.4 如果异常被try｛｝catch｛｝了，事务就不回滚了，如果想让事务回滚必须再往外抛try｛｝catch｛throw RuntimeException
+    
+    
+  
+    
