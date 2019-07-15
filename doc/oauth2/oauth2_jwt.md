@@ -222,7 +222,7 @@ redirect_uri:申请授权码时的跳转url，一定和申请授权码时用的r
 
  此链接需要使用 http Basic认证。 
 
-什么是http Basic认证? 
+什么是http Basic认证?
 
 http协议定义的一种认证方式，将客户端id和客户端密码按照“客户端ID:客户端密码”的格式拼接，并用base64编 码，放在header中请求服务端，一个例子: 
 
@@ -230,6 +230,18 @@ Authorization:Basic WGNXZWJBcHA6WGNXZWJBcHA=
 
 WGNXZWJBcHA6WGNXZWJBcHA= 是用户名:密码的base64编码。
 认证失败服务端返回 401 Unauthorized
+
+代码实现：
+
+```java
+//获取httpbasic的串
+    private String getHttpBasic(String clientId, String clientSecret) {
+        String string = clientId + ":" + clientSecret;
+        //将串进行base64编码
+        byte[] encode = Base64Utils.encode(string.getBytes());
+        return "Basic " + new String(encode);
+    }
+```
 
 
 
@@ -250,6 +262,8 @@ WGNXZWJBcHA6WGNXZWJBcHA= 是用户名:密码的base64编码。
 ##### 4.1.2.0资源服务器流程
 
 ![returncode](./oauth2_images/resourceserver.png)
+
+上图应该是公钥解密
 
 解释：资源服务器校验令牌最终会让认证服务器校验，谁颁发谁校验
 
@@ -665,7 +679,7 @@ JWT令牌生成采用非对称加密算法
 下边命令生成密钥证书，采用RSA 算法每个证书包含公钥和私钥 
 
 ```shell
-keytool -genkeypair -alias xckey -keyalg RSA -keypass xuecheng -keystore xc.keystore -storepass xuechengkeystore 
+keytool -genkeypair -alias xckey -keyalg RSA -keypass xpttxsok@123123 -keystore xc.keystore -storepass xpttxsok1@23123
 ```
 
 Keytool 是一个java提供的证书管理工具 
@@ -680,12 +694,29 @@ xc.keystore保存了生成的证书
 
 ```
 
+```java
+//生成私钥和公钥
+```
+
 
 
 ### 查询证书信息
 
 ```shell
 keytool -list -keystore xc.keystore 
+```
+
+```shell
+[@xpMac:oauth2 (master)]$ keytool -list -keystore xc.keystore
+输入密钥库口令:
+
+密钥库类型: JKS
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+xckey, 2019-7-14, PrivateKeyEntry,
+证书指纹 (SHA1): 33:40:F7:A5:20:1E:4B:BE:79:FF:BD:2F:56:2F:E9:B0:55:E8:B2:F8
 ```
 
 
@@ -698,17 +729,145 @@ keytool -delete -alias xckey -keystore xc.keystore
 
 
 
-### 导出公钥
-
-openssl是一个加解密工具包，这里使用openssl来导出公钥信息。
-安装 openssl:http://slproweb.com/products/Win32OpenSSL.html
-安装资料目录下的Win64OpenSSL-1_1_0g.exe
-配置openssl的path环境变量，本教程配置在D:\OpenSSL-Win64\bin
-cmd进入xc.keystore文件所在目录执行如下命令:
+### 查看PrivateKeyEntry
 
 ```shell
-keytool ‐list ‐rfc ‐‐keystore xc.keystore | openssl x509 ‐inform pem ‐pubkey
+[@xpMac:oauth2 (master)]$ keytool -list -RFC -keystore  xc.keystore
+输入密钥库口令:
+
+密钥库类型: JKS
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: xckey
+创建日期: 2019-7-14
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+-----BEGIN CERTIFICATE-----
+MIIDXzCCAkegAwIBAgIEGaFT9TANBgkqhkiG9w0BAQsFADBgMREwDwYDVQQGEwh6
+aG9uZ2d1bzERMA8GA1UECBMIc2hhbmdoYWkxETAPBgNVBAcTCHNoYW5naGFpMQsw
+CQYDVQQKEwJ4dTELMAkGA1UECxMCeHUxCzAJBgNVBAMTAnh1MB4XDTE5MDcxNDAz
+MDM1OFoXDTE5MTAxMjAzMDM1OFowYDERMA8GA1UEBhMIemhvbmdndW8xETAPBgNV
+BAgTCHNoYW5naGFpMREwDwYDVQQHEwhzaGFuZ2hhaTELMAkGA1UEChMCeHUxCzAJ
+BgNVBAsTAnh1MQswCQYDVQQDEwJ4dTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAJMhiKVAB7Zyjm1JRrHeQnqcqAYgcnhyoYEdV81awlKtd2EWVHl2LV6U
+wzLmMt9KdCO2Jo3jlE9Bs5VG6N6rcERD4xqdGxgMWRNMN0Ii6FJWtJRaGbWpPTVl
++BwItVOX8yT0A1OJBb8xk1lvoCqbwVMwlm+ss3FjCvV2ToYdUOyjTA8NSQJth6eD
+WgzesESmlI90PXXV8vNmzh7S0jvpPQ5NuDJyasOzL28ZyIXZtinCWT3IZvOG4UL1
+VGiK8uRE30Q/PNDw5zwxxcqer9Bi0L0Yz6NQ+1RhB8EVXGJj5i1qcKpXRlxcpl4w
+NiGYBg8IoTJc8iXkC7OidM8sBGP1XksCAwEAAaMhMB8wHQYDVR0OBBYEFL2JRx/T
+Xk6hzwO7NxOzp2ANiFM2MA0GCSqGSIb3DQEBCwUAA4IBAQA30tYGVAugHa3jRcTp
+hMg1lBRykNi1kmHHStOfuEQHCkBJbTAXD14n5g0/IrXRfWtGOB5KyvxRHU44e3Ek
+XhmsTrMaYYkwf5FLWHrndhRSb6Tdfjyt3WIkqsu1AJFJOpW2HMF0pTdmpslqkUYe
+Xw4RDh3zkHmnVpjPwlgOTw/Q49++xmebzVh1mnX5SbVJyS0cOKMK8epC0JsSVDVG
+EVHImW3eh+qpnMRMrh2FNtCN/rS9U3LZDeYfnEiiBUw9IaN3qAj++7uY6cI6iAoa
+tW+3HIauxDLuU5jaZ0EKDSKpsA+DL2D0ZCPy/DaiTD8S4pINLq2mXK8IVvmeI0cD
+/Xro
+-----END CERTIFICATE-----
+
+
+*******************************************
+*******************************************
 ```
+
+
+
+### 导出公钥文件
+
+```shell
+keytool -export -alias xckey -file xc.crt -keystore xc.keystore 
+```
+
+查看上一步导出的信息
+
+```shell
+[@xpMac:oauth2 (master)]$ keytool -export -alias xckey -file xckey.crt -keystore xc.keystore
+输入密钥库口令:
+存储在文件 <xckey.crt> 中的证书
+[@xpMac:oauth2 (master)]$ keytool -printcert -file xckey.crt
+所有者: CN=xu, OU=xu, O=xu, L=shanghai, ST=shanghai, C=zhongguo
+发布者: CN=xu, OU=xu, O=xu, L=shanghai, ST=shanghai, C=zhongguo
+序列号: 19a153f5
+有效期开始日期: Sun Jul 14 11:03:58 CST 2019, 截止日期: Sat Oct 12 11:03:58 CST 2019
+证书指纹:
+	 MD5: A6:3C:43:DF:8E:4E:55:70:60:FD:F1:EC:58:9A:23:C1
+	 SHA1: 33:40:F7:A5:20:1E:4B:BE:79:FF:BD:2F:56:2F:E9:B0:55:E8:B2:F8
+	 SHA256: 7C:62:E5:87:AA:8B:5D:4E:04:67:E0:7B:39:75:75:40:7B:9C:DC:CA:C4:0D:54:AC:E0:72:8B:EB:69:6B:35:C1
+	 签名算法名称: SHA256withRSA
+	 版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: BD 89 47 1F D3 5E 4E A1   CF 03 BB 37 13 B3 A7 60  ..G..^N....7...`
+0010: 0D 88 53 36                                        ..S6
+]
+]
+
+[@xpMac:oauth2 (master)]$
+```
+
+
+
+
+
+### java代码查看私钥和公钥
+
+```java
+package com.xp.bio.bio1;
+
+import sun.misc.BASE64Encoder;
+
+import java.io.FileInputStream;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+
+public class ExportCert {
+
+    public static void main(String[] args) throws Exception {
+
+        String cerPath = "/Users/xupan/IdeaProjects/springboot/doc/oauth2/xckey.crt";		//证书文件路径
+        String storePath = "/Users/xupan/IdeaProjects/springboot/doc/oauth2/xc.keystore";	//证书库文件路径
+        String alias = "xckey";		//证书别名
+        String storePw = "xpttxsok1@23123";	//证书库密码
+        String keyPw = "xpttxsok@123123";	//证书密码
+
+        System.out.println("从证书获取的公钥为:" + getPublicKey(cerPath));
+        System.out.println("从证书获取的私钥为:" + getPrivateKey(storePath, alias, storePw, keyPw));
+
+    }
+
+    private static String getPublicKey(String cerPath) throws Exception {
+        CertificateFactory certificatefactory = CertificateFactory.getInstance("X.509");
+        FileInputStream fis = new FileInputStream(cerPath);
+        X509Certificate Cert = (X509Certificate) certificatefactory.generateCertificate(fis);
+        PublicKey pk = Cert.getPublicKey();
+        String publicKey = new BASE64Encoder().encode(pk.getEncoded());
+        return publicKey;
+    }
+
+    private static String getPrivateKey(String storePath, String alias, String storePw, String keyPw) throws Exception {
+        FileInputStream is = new FileInputStream(storePath);
+        KeyStore ks = KeyStore.getInstance("JKS");
+        ks.load(is, storePw.toCharArray());
+        is.close();
+        PrivateKey key = (PrivateKey) ks.getKey(alias, keyPw.toCharArray());
+        String privateKey = new BASE64Encoder().encode(key.getEncoded());
+        return privateKey;
+    }
+
+}
+
+```
+
+
 
 # 6.Spring cloud-oauth2架构设计
 
@@ -722,6 +881,12 @@ keytool ‐list ‐rfc ‐‐keystore xc.keystore | openssl x509 ‐inform pem �
 5、资源服务获取令牌，资源服务器会校验令牌的合法性，完成授权。 
 6、资源服务完成授权则响应资源信息。 
 ```
+
+
+
+![jiaoyan](./oauth2_images/welogin.png)
+
+
 
 解释：资源服务器校验令牌最终会让认证服务器校验，谁颁发谁校验
 
