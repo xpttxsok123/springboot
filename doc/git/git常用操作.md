@@ -15,3 +15,21 @@
 git checkout -b  springboot001
 git push --set-upstream origin springboot001
 ```
+
+
+
+git 提交 3步
+
+git add
+
+git commit
+
+git push
+
+
+
+git 提交 2步
+
+git ac 'xxx.txt'
+
+git push

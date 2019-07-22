@@ -97,7 +97,7 @@ SSO的定义是在多个应用系统中，用户只需要登录一次就可以�
 分布式系统要实现单点登录，通常将认证系统独立抽取出来，并且将用户身份信息存储在单独的存储介质，比如:
 MySQL、Redis，考虑性能要求，通常存储在Redis中，如下图:
 
-![dandiandenglu](./oauth2_images/dandiandenglu.png)
+![dandiandenglu](images/dandiandenglu.png)
 
 单点登录的特点是:单点登录的特点是:
 
@@ -150,7 +150,7 @@ Oauth协议目前发展到2.0版本，1.0版本过于复杂，2.0版本已得到
 
 ##### 4.1.1.0授权服务器流程
 
-![returncode](./oauth2_images/authserver.png)
+![returncode](images/authserver.png)
 
 
 
@@ -177,7 +177,7 @@ Get请求: localhost:40400/auth/oauth/authorize?
 
 首先跳转到登录页面:
 
-![oauth_login](./oauth2_images/oauth_login.png)
+![oauth_login](images/oauth_login.png)
 
 输入账号和密码，点击Login。
 Spring Security接收到请求会调用UserDetailsService接口的loadUserByUsername方法查询用户正确的密码。
@@ -186,7 +186,7 @@ Spring Security接收到请求会调用UserDetailsService接口的loadUserByUser
 
 接下来进入授权页面:
 
-![getcode_url](./oauth2_images/getcode_url.png)
+![getcode_url](images/getcode_url.png)
 
 
 
@@ -196,7 +196,7 @@ Spring Security接收到请求会调用UserDetailsService接口的loadUserByUser
 接下来返回授权码:
 认证服务携带授权码跳转redirect_uri
 
-![returncode](./oauth2_images/code.png)
+![returncode](images/code.png)
 
 
 
@@ -245,11 +245,11 @@ WGNXZWJBcHA6WGNXZWJBcHA= 是用户名:密码的base64编码。
 
 
 
-![get_token_url](./oauth2_images/get_token_url.png)
+![get_token_url](images/get_token_url.png)
 
 
 
-![garnttype](./oauth2_images/garnttype.png)
+![garnttype](images/garnttype.png)
 
 
 
@@ -261,13 +261,13 @@ WGNXZWJBcHA6WGNXZWJBcHA= 是用户名:密码的base64编码。
 
 ##### 4.1.2.0资源服务器流程
 
-![returncode](./oauth2_images/resourceserver.png)
+![returncode](images/resourceserver.png)
 
 上图应该是公钥解密
 
 解释：资源服务器校验令牌最终会让认证服务器校验，谁颁发谁校验
 
-![未命名文件 (2)](./oauth2_images/jiaoyan.png)
+![未命名文件 (2)](images/jiaoyan.png)
 
 1.配置公钥 
 
@@ -275,7 +275,7 @@ WGNXZWJBcHA6WGNXZWJBcHA= 是用户名:密码的base64编码。
 
 将公钥拷贝到 publickey.txt文件中，将此文件拷贝到资源服务工程的classpath下 
 
-![dandiandenglu](./oauth2_images/publickey.png)
+![dandiandenglu](images/publickey.png)
 
 
 
@@ -369,13 +369,13 @@ get http://localhost:31200/course/coursepic/list/4028e58161bd3b380161bd3bcd2f000
 请求时携带令牌:
 在http header中添加 Authorization: Bearer 令牌:
 
-![dandiandenglu](./oauth2_images/oktoken.png)
+![dandiandenglu](images/oktoken.png)
 
 
 
 当输入错误的令牌也无法正常访问资源:
 
-![dandiandenglu](./oauth2_images/errortoken.png)
+![dandiandenglu](images/errortoken.png)
 
 
 
@@ -388,7 +388,7 @@ get http://localhost:31200/course/coursepic/list/4028e58161bd3b380161bd3bcd2f000
 解决swagger-ui无法访问
 当课程管理加了授权之后再访问swagger-ui则报错:
 
-![dandiandenglu](./oauth2_images/swagger_uierror.png)
+![dandiandenglu](images/swagger_uierror.png)
 
 
 
@@ -431,7 +431,7 @@ public void configure(HttpSecurity http) throws Exception {
 
 有道云微信登陆：
 
-![dandiandenglu](./oauth2_images/disanfang_renzhen_shengmingxian.png)
+![dandiandenglu](images/disanfang_renzhen_shengmingxian.png)
 
 oauth授权来自官网：
 
@@ -481,11 +481,11 @@ password:密码
 
 
 
-![auth_xitong_jiagou](./oauth2_images/passworkurl.png)
+![auth_xitong_jiagou](images/passworkurl.png)
 
 
 
-![auth_xitong_jiagou](./oauth2_images/passwordtoken.png)
+![auth_xitong_jiagou](images/passwordtoken.png)
 
 ```
 注意:当令牌没有过期时同一个用户再次申请令牌则不再颁发新令牌。
@@ -564,7 +564,7 @@ refresh_token:刷新令牌(注意不是access_token，而是refresh_token)
 1.认证服务器返回给客户端的token没有实际含义，资源服务器没法解析
 ```
 
-![jiaoyan](./oauth2_images/jiaoyan.png)
+![jiaoyan](images/jiaoyan.png)
 
 解决：
 
@@ -577,7 +577,7 @@ JWT访问资源服务，资源服务根据事先约定的算法自行完成令�
 
 
 
-![resourcevalidate](./oauth2_images/resourcevalidate.png)
+![resourcevalidate](images/resourcevalidate.png)
 
 什么是JWT? 
 
@@ -871,7 +871,7 @@ public class ExportCert {
 
 # 6.Spring cloud-oauth2架构设计
 
-![auth_xitong_jiagou](./oauth2_images/auth_xitong_jiagou.png)
+![auth_xitong_jiagou](images/auth_xitong_jiagou.png)
 
 ```
 1、用户请求认证服务完成认证。
@@ -884,13 +884,13 @@ public class ExportCert {
 
 
 
-![jiaoyan](./oauth2_images/welogin.png)
+![jiaoyan](images/welogin.png)
 
 
 
 解释：资源服务器校验令牌最终会让认证服务器校验，谁颁发谁校验
 
-![jiaoyan](./oauth2_images/jiaoyan.png)
+![jiaoyan](images/jiaoyan.png)
 
 
 
