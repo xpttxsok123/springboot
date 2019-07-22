@@ -10,8 +10,8 @@ import java.util.concurrent.Executors;
 public class Application {
 
     public static void main(String[] args){
-        Executors.newFixedThreadPool(6);
-        SpringApplication.run(Application.class,args);
+
+        SpringApplication.run(Application.class);
     }
 
 }
