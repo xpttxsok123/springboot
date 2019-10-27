@@ -1,3 +1,64 @@
+
+# task1:
+
+
+```
+doc/git/git.md
+doc/maven/maven.md
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # note
 
 ```
@@ -18,4 +79,5 @@
 
 
 [oauth2.0](doc/oauth2/oauth2_jwt.md)
+
 
