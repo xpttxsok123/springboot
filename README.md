@@ -12,7 +12,8 @@ sdfksdfklsjdfklsdj kfjslk
 ```
 
 1.点击勾
-
+2.填写注释 然后点击commit
+3.nskjhkjskj
 
 
 
