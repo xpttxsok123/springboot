@@ -144,6 +144,81 @@ eureka:
 
 
 
+# 配置连接密码
+
+
+
+```xml
+<!--加入服务认证(密码),需要引入security-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+
+
+## 2.0版本配置方法(注意:与旧版配置不同)
+
+```yml
+server:
+  port: 8100
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # 由于该应用为注册中心,所以设置为false,代表不向注册中心注册自己
+    register-with-eureka: false
+    # 由于注册中心的职责就是维护服务示例,它并不需要去检索服务,所以也设置为false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://name:pwd@${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  security:
+    user:
+      name: name
+      password: pwd
+```
+
+
+
+## 旧版配置方法
+
+```yaml
+server:
+  port: 8100
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # 由于该应用为注册中心,所以设置为false,代表不向注册中心注册自己
+    register-with-eureka: false
+    # 由于注册中心的职责就是维护服务示例,它并不需要去检索服务,所以也设置为false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://name:pwd@${eureka.instance.hostname}:${server.port}/eureka/
+# 添加security的配置
+security:
+  basic:
+    # 启用 security 权限控制
+    enabled: true
+  user:
+    name: mao
+    password: 123456
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 # CAP
 
 加州大学的计算机科学家 Eric Brewer 提出，分布式系统有三个指标:
