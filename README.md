@@ -11,9 +11,7 @@ doc/maven/maven.md
 sdfksdfklsjdfklsdj kfjslk
 ```
 
-username: 18781110037@163.com
-password: xupan@123123
-
+1.点击勾
 
 
 
