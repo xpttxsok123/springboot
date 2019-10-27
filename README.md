@@ -10,10 +10,11 @@ doc/maven/maven.md
 
 sdfksdfklsjdfklsdj kfjslk
 ```
-
+0.git pull
 1.点击勾
 2.填写注释 然后点击commit
-3.nskjhkjskj
+3.git push
+4.账号，密码lisifan
 
 
 
