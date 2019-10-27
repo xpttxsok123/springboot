@@ -1,31 +1,5 @@
 
 # task1:
-
-
-# task1:
-
-
-# task1:
-
-
-# task1:
-
-
-# task1:
-
-
-# task1:
-
-
-# task1:
-
-
-
-# task1:
-
-# task1:
-
-
 ```
 doc/git/git.md
 doc/maven/maven.md
