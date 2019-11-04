@@ -10,4 +10,4 @@
     
 3.预习java集合框架，重点掌握:
     List, ArrayList
-    Map, Hash
+    Map, Hashmap
