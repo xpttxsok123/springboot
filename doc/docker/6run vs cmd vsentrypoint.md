@@ -48,6 +48,8 @@ ENTRYPOINT ["/bin/echo", "hello $name"]
 
 
 
+docker build -t[镜像名称] -f[Dockerfile文件位置]
+
 测试：Dockerfile1:
 [root@centos7001 dockerfile-shell]# docker build -t xupan/centos-dockerfile-shell .
 [root@centos7001 dockerfile-shell]# docker images

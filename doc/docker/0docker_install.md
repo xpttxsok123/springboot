@@ -6,6 +6,26 @@ https://docs.docker.com/install/linux/docker-ce/centos/
 
 
 
+## centos:默认设置更改
+
+[root@centos7001 ~]# vim /etc/selinux/config 
+SELINUX=disable
+
+安全增强型 Linux（Security-Enhanced Linux）简称 SELinux，它是一个 Linux 内核模块，也是 Linux 的一个安全子系统。SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源（最小权限原则）。
+
+
+
+关闭防火墙
+[root@centos7001 ~]# systemctl stop firewalld
+
+开机禁止启动
+[root@centos7001 ~]# systemctl stop firewalld
+[root@centos7001 ~]# systemctl disable firewalld
+Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+Removed symlink /etc/systemd/system/basic.target.wants/firewalld.service.
+
+
+
 ## 1.Uninstall old versions
 
 ```

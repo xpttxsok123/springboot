@@ -1,0 +1,73 @@
+
+
+# 创建自己的bridge
+
+重新启动两个busybox
+
+docker run -d --name test1 busybox /bin/sh -c "while true; do sleep 3600; done"
+
+docker run -d --name tes2 busybox /bin/sh -c "while true; do sleep 3600; done"
+
+
+
+
+
+## 1.查看容器的bridge
+
+[root@centos7001 ~]# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+ef59613259b1        bridge              bridge              local
+8e3f61f804ec        host                host                local
+cb901b049794        none                null                local
+
+
+
+
+
+## 2 .创建bridge
+
+[root@centos7001 ~]# docker network create -d bridge my-bridge
+864941f5bcc05d7dc920512851bb27cfde485a467c7e3e9474172cc40221be3b
+
+
+
+## 3.查看自己的bridge
+
+[root@centos7001 ~]# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+ef59613259b1        bridge              bridge              local
+8e3f61f804ec        host                host                local
+864941f5bcc0        my-bridge           bridge              local
+cb901b049794        none                null                local
+**多了一个ID为864941f5bcc0的bridge**
+
+
+
+[root@centos7001 ~]# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br-864941f5bcc0         8000.0242894ac71e       no
+docker0         8000.0242b0fc862c       no              veth999991b
+                                                        vetha15bee7
+virbr0          8000.5254004ff2fa       yes             virbr0-nic
+
+**多了一个name 为br-864941f5bcc0的bridge,但是没有接口**
+
+
+
+
+
+
+
+## 创建容器的时候指定bridge
+
+[root@centos7001 ~]# docker run -d --name test3 --network  my-bridge  busybox /bin/sh -c "while true; do sleep 3600; done"
+ad88a396741098692de5025d901f5f8e46903e5ae04c706f2aa80ba7cf9a09f0
+
+[root@centos7001 ~]# brctl show
+bridge name     bridge id               STP enabled     interfaces
+br-864941f5bcc0         8000.0242894ac71e       no              vethfffba21
+docker0         8000.0242b0fc862c       no              veth999991b
+                                                        vetha15bee7
+virbr0          8000.5254004ff2fa       yes             virbr0-nic
+
+**name 为br-864941f5bcc0的bridge有接口vethfffba21**
