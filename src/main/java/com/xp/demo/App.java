@@ -1,12 +1,8 @@
 package com.xp.demo;
 
-import java.util.HashMap;
 
 public class App {
 
-    // 1，2，3，4
-    public static void main(String[] args) {
-      
-    }
+    private int a = 8;  // pre app = null      res app = new App() ;    count = 1;
 
 }
