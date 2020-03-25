@@ -6,4 +6,4 @@
 
 
 
-![jvm](../images/jvm.png)
+![jvm](images/jvm.png)
