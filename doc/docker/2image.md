@@ -142,8 +142,9 @@ ADD hello /
 CMD ["/hello"]
 
 
-
+```text
 [root@centos7001 hello-world]# docker build -t xupan/hello-world .
+
 Sending build context to Docker daemon  864.8kB
 Step 1/3 : FROM scratch
  ---> 
@@ -155,21 +156,23 @@ Removing intermediate container 51be64b7b925
  ---> 22878ce4fd12
 Successfully built 22878ce4fd12
 Successfully tagged xupan/hello-world:latest
+```
 
 
-
+```text
 [root@centos7001 hello-world]# docker image ls
+
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 xupan/hello-world   latest              22878ce4fd12        26 seconds ago      861kB
 hello-world         latest              fce289e99eb9        9 months ago        1.84kB
+```
 
-
-
+```text
 [root@centos7001 hello-world]# docker history 22878ce4fd12
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 22878ce4fd12        2 minutes ago       /bin/sh -c #(nop)  CMD ["/hello"]               0B                  
 58da3cf4b8fc        2 minutes ago       /bin/sh -c #(nop) ADD file:d9faf38ea9495d85c  861kB    
-
+```
 
 
 
@@ -199,6 +202,8 @@ docker image rm imageID
 **重新启动docker**
 
 **查看docker 镜像加速器是否配置成功**
+```text
+
 
 [root@centos7001 docker]# docker info
 Client:
@@ -292,7 +297,7 @@ Server:
   https://hub-mirror.c.163.com/
  Live Restore Enabled: false
 
-
+```
 
 **devicemapper: docker 的存储驱动**
 

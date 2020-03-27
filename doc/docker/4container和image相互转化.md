@@ -1,7 +1,7 @@
 # Container 和 image的相互转换
 
 ## 1.基于上一层container创建image(不推荐)
-
+```text
 运行一个container
 [root@centos7001 ~]# docker run -it centos
 
@@ -37,6 +37,7 @@ xupan/hello-world   latest              22878ce4fd12        2 hours ago         
 centos              latest              0f3e07c0138f        3 weeks ago         220MB
 hello-world         latest              fce289e99eb9        9 months ago        1.84kB
 
+```
 
 
 [root@centos7001 ~]# docker history centos:latest 
