@@ -1,5 +1,9 @@
 package com.xp.demo.thread;
 
+import io.netty.util.concurrent.CompleteFuture;
+
+import java.util.concurrent.CompletableFuture;
+
 public class JMMDemo {
 
     public static  boolean initFlag = false;
@@ -28,6 +32,9 @@ public class JMMDemo {
         thread1.start();
         Thread.currentThread().sleep(1000);
         thread2.start();
+
+
+        CompletableFuture<Void> voidCompletableFuture = CompletableFuture.runAsync(() -> loadData());
     }
 
 }
